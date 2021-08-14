@@ -1,3 +1,4 @@
+using ds.Tutorial.web.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ds.Tutorial.web
 {
@@ -24,6 +26,13 @@ namespace ds.Tutorial.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<TutorialDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("tutorial_db"))
+            );
+
+            // ƒŠƒ|ƒWƒgƒŠ
+            services.AddTransient<TutorialRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
