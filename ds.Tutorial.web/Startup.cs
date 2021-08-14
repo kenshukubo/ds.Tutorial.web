@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ds.Tutorial.web.Models.Interface;
 
 namespace ds.Tutorial.web
 {
@@ -33,6 +34,9 @@ namespace ds.Tutorial.web
 
             // リポジトリ
             services.AddTransient<TutorialRepository>();
+
+            // インターフェース
+            services.AddTransient<IGreeting, GoodMorning>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
