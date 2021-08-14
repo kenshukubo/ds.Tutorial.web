@@ -1,5 +1,5 @@
-﻿using ds.Tutorial.web.Models;
-using ds.Tutorial.web.Repositories;
+﻿using ds.Tutorial.Model;
+using ds.Tutorial.Model.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

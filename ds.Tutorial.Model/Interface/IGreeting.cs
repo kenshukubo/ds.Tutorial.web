@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ds.Tutorial.web.Models.Interface
+namespace ds.Tutorial.Model.Interface
 {
     public interface IGreeting
     {

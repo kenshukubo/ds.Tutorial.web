@@ -1,11 +1,10 @@
-﻿using ds.Tutorial.web.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ds.Tutorial.web.Repositories
+namespace ds.Tutorial.Model.Repositories
 {
     public class TutorialDbContext : DbContext
     {

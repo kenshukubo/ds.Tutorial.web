@@ -1,4 +1,4 @@
-﻿using ds.Tutorial.web.Models;
+﻿using ds.Tutorial.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

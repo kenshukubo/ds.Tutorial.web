@@ -1,4 +1,4 @@
-using ds.Tutorial.web.Repositories;
+using ds.Tutorial.Model.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ds.Tutorial.web.Models.Interface;
+using ds.Tutorial.Model.Interface;
 
 namespace ds.Tutorial.web
 {
