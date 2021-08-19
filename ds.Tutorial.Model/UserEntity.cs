@@ -20,12 +20,12 @@ namespace ds.Tutorial.Model
         public int Id { get; set; }
 
         [Column("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Column("age")]
         public int Age { get; set; }
 
         [Column("hobby")]
-        public string Hobby { get; set; }
+        public string? Hobby { get; set; }
     }
 }
