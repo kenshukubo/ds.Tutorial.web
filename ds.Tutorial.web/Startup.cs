@@ -28,6 +28,10 @@ namespace ds.Tutorial.web
         {
             services.AddRazorPages();
 
+            services.AddDbContext<TutorialDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("tutorial_db"))
+            );
+
             services.AddDbContext<BooksContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("tutorial_db"),
@@ -36,7 +40,7 @@ namespace ds.Tutorial.web
             );
 
             // リポジトリ
-            // services.AddTransient<TutorialRepository>();
+            services.AddTransient<TutorialRepository>();
 
             // インターフェース
             services.AddTransient<IGreeting, GoodMorning>();
