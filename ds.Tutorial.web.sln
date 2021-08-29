@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ds.Tutorial.web", "ds.Tutor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ds.Tutorial.Model", "ds.Tutorial.Model\ds.Tutorial.Model.csproj", "{E8B36C5B-1B93-4770-8154-2689C980C660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFunction", "TestFunction\TestFunction.csproj", "{E6D28E5D-F3B9-4B30-8914-D94D8E7A196B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFunction", "TestFunction\TestFunction.csproj", "{E6D28E5D-F3B9-4B30-8914-D94D8E7A196B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
