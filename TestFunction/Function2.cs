@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using ds.Tutorial.Model.Repositories;
 
 namespace TestFunction
 {
@@ -27,7 +28,7 @@ namespace TestFunction
         {
             log.LogInformation($".NET Core Version: {Environment.Version}");
 
-            var list = await _tutorialDbContext.Users.ToListAsync();
+            var list = await _tutorialDbContext.User.ToListAsync();
 
             return new OkObjectResult(list);
         }

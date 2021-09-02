@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ds.Tutorial.Model;
+using ds.Tutorial.Model.Repositories;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace TestFunction
@@ -19,34 +21,40 @@ namespace TestFunction
         {
             var services = builder.Services;
 
+            //var hoge = builder.GetContext().Configuration;
+
             services.AddDbContext<TutorialDbContext>(options =>
                 options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings:tutorial_db", EnvironmentVariableTarget.Process))
             );
+
+            //services.AddDbContext<TutorialDbContext>(options =>
+            //    options.UseSqlServer(hoge.GetConnectionString(""))
+            //);
 
             services.AddTransient<IPlayerVoiceService, PlayerVoiceService>();
             services.AddTransient<IPlayerVoiceRepository, InMemoryPlayerVoiceRepository>();
         }
     }
 
-    public class TutorialDbContext : DbContext
-    {
-        public TutorialDbContext() { }
+    //public class TutorialDbContext : DbContext
+    //{
+    //    public TutorialDbContext() { }
 
-        public TutorialDbContext(DbContextOptions<TutorialDbContext> options) : base(options) { }
+    //    public TutorialDbContext(DbContextOptions<TutorialDbContext> options) : base(options) { }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+    //    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
-        public DbSet<UserEntity> Users { get; set; }
-    }
+    //    public DbSet<UserEntity> User { get; set; }
+    //}
 
-    public class UserEntity
-    {
-        public int Id { get; set; }
+    //public class UserEntity
+    //{
+    //    public int Id { get; set; }
 
-        public string? Name { get; set; }
+    //    public string? Name { get; set; }
 
-        public int Age { get; set; }
+    //    public int Age { get; set; }
 
-        public string? Hobby { get; set; }
-    }
+    //    public string? Hobby { get; set; }
+    //}
 }
