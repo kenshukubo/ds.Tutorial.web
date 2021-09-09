@@ -15,6 +15,7 @@ namespace ds.Tutorial.Model.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
         public DbSet<UserEntity> User { get; set; }
+        public DbSet<TaskModel> TaskList { get; set; }
 
     }
 }

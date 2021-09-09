@@ -17,8 +17,15 @@ namespace TestFunction
     {
         private static readonly List<TaskModel> Items = new List<TaskModel>();
 
+        public Function3(TutorialDbContext tutorialDbContext)
+        {
+            _tutorialDbContext = tutorialDbContext;
+        }
+
+        private readonly TutorialDbContext _tutorialDbContext;
+
         [FunctionName("CreateTask")]
-        public static async Task<IActionResult> CreateTask(
+        public async Task<IActionResult> CreateTask(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "task")] HttpRequest req,
             ILogger log)
         {
@@ -26,13 +33,11 @@ namespace TestFunction
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var input = JsonConvert.DeserializeObject<CreateTaskModel>(requestBody);
 
-            log.LogInformation("Define Task");
             var task = new TaskModel()
             {
                 Description = "abcde"
             };
-            log.LogInformation("Add Task");
-            Items.Add(task);
+            _tutorialDbContext.TaskList.Add(task);
             return new OkObjectResult(task);
 
             //try
