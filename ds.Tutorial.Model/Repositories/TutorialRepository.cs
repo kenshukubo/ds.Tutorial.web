@@ -23,7 +23,7 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                _dbContext.Users.Add(user);
+                _dbContext.User.Add(user);
                 return _dbContext.SaveChanges();
             }
         }
@@ -37,7 +37,7 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                var userForm = _dbContext.Users.FirstOrDefault(x => x.Id == user.Id);
+                var userForm = _dbContext.User.FirstOrDefault(x => x.Id == user.Id);
                 userForm.Name = user.Name;
                 userForm.Age = user.Age;
                 userForm.Hobby = user.Hobby;
@@ -54,8 +54,8 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                var userForm = _dbContext.Users.FirstOrDefault(x => x.Id == id);
-                _dbContext.Users.Remove(userForm);
+                var userForm = _dbContext.User.FirstOrDefault(x => x.Id == id);
+                _dbContext.User.Remove(userForm);
                 return _dbContext.SaveChanges();
             }
         }
@@ -69,7 +69,7 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                return _dbContext.Users.FirstOrDefault(x => x.Id == id);
+                return _dbContext.User.FirstOrDefault(x => x.Id == id);
             }
         }
 
@@ -82,7 +82,7 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                return _dbContext.Users.Where(x => x.Age == age).ToList();
+                return _dbContext.User.Where(x => x.Age == age).ToList();
             }
         }
 
@@ -95,7 +95,7 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                return _dbContext.Users.Where(x => x.Age == age).Select(x => x.Name).ToList();
+                return _dbContext.User.Where(x => x.Age == age).Select(x => x.Name).ToList();
             }
         }
 
@@ -109,7 +109,7 @@ namespace ds.Tutorial.Model.Repositories
         {
             using (_dbContext)
             {
-                return _dbContext.Users.Skip(pageSize * (page - 1)).Take(pageSize).ToList();
+                return _dbContext.User.Skip(pageSize * (page - 1)).Take(pageSize).ToList();
             }
         }
 
@@ -125,7 +125,7 @@ namespace ds.Tutorial.Model.Repositories
                 {
                     try
                     {
-                        var userListForm = _dbContext.Users.Where(x => x.Age < 0);
+                        var userListForm = _dbContext.User.Where(x => x.Age < 0);
                         foreach (UserEntity user in userListForm)
                         {
                             user.Age = 0;
