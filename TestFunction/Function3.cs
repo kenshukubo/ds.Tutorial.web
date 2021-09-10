@@ -15,7 +15,7 @@ namespace TestFunction
 {
     public class Function3
     {
-        private static readonly List<TaskModel> Items = new List<TaskModel>();
+        //private static readonly List<TaskModel> Items = new List<TaskModel>();
 
         public Function3(TutorialDbContext tutorialDbContext)
         {
