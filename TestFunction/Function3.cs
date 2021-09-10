@@ -35,9 +35,11 @@ namespace TestFunction
 
             var task = new TaskModel()
             {
+                CreatedOn = DateTime.Now,
                 Description = "abcde"
             };
             _tutorialDbContext.TaskList.Add(task);
+            await _tutorialDbContext.SaveChangesAsync();
             return new OkObjectResult(task);
 
             //try
