@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
-using ds.Tutorial.Model.Repositories;
+using TestFunction.Repositories;
 
 namespace TestFunction
 {

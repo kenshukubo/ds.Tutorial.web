@@ -9,8 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ds.Tutorial.Model;
-using ds.Tutorial.Model.Repositories;
+using TestFunction.Model;
+using TestFunction.Repositories;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace TestFunction

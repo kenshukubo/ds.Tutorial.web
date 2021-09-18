@@ -7,9 +7,8 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using ds.Tutorial.Model.Repositories;
-using ds.Tutorial.Model;
-using Microsoft.Data.SqlClient;
+using TestFunction.Repositories;
+using TestFunction.Model;
 
 namespace TestFunction
 {
