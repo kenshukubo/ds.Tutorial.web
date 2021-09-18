@@ -18,25 +18,26 @@ namespace TestFunction
         private readonly TutorialDbContext _tutorialDbContext;
 
         [FunctionName("Timer")]
-        public void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-            PerformTasks().GetAwaiter().GetResult();
+            await PerformTasksAsync();
         }
 
-        private async Task<IActionResult> PerformTasks()
+        private async Task PerformTasksAsync()
         {
             //string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             //var input = JsonConvert.DeserializeObject<CreateTaskModel>(requestBody);
+
 
             var task = new TaskModel()
             {
                 CreatedOn = DateTime.Now,
                 Description = "timer test"
             };
+
             _tutorialDbContext.TaskList.Add(task);
             await _tutorialDbContext.SaveChangesAsync();
-            return new OkObjectResult(task);
         }
     }
 }
