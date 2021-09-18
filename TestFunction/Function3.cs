@@ -26,17 +26,17 @@ namespace TestFunction
 
         [FunctionName("CreateTask")]
         public async Task<IActionResult> CreateTask(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "task")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "task")] CreateTaskModel req,
             ILogger log)
         {
             log.LogInformation("Creating a new task list item");
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var input = JsonConvert.DeserializeObject<CreateTaskModel>(requestBody);
+            //string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            //var input = JsonConvert.DeserializeObject<CreateTaskModel>(requestBody);
 
             var task = new TaskModel()
             {
                 CreatedOn = DateTime.Now,
-                Description = input.Description
+                Description = req.Description
             };
             _tutorialDbContext.TaskList.Add(task);
             await _tutorialDbContext.SaveChangesAsync();
