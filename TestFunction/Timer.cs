@@ -18,7 +18,7 @@ namespace TestFunction
         private readonly TutorialDbContext _tutorialDbContext;
 
         [FunctionName("Timer")]
-        public async Task Run([TimerTrigger("0 30 9 * * *")]TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
             await PerformTasksAsync();

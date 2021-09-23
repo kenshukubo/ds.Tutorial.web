@@ -25,7 +25,7 @@ namespace TestFunction
 
         [FunctionName("UpdateTask")]
         public async Task<IActionResult> UpdateTask(
-            [HttpTrigger(AuthorizationLevel.Function, "put", "get", Route = "task/{id}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", "get", Route = "task/{id}")] HttpRequest req,
             ILogger log, int id)
         {
             var task = _tutorialDbContext.TaskList.FirstOrDefault(t => t.Id == id);

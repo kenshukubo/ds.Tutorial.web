@@ -24,7 +24,7 @@ namespace TestFunction
             //var hoge = builder.GetContext().Configuration;
 
             services.AddDbContext<TutorialDbContext>(options =>
-                options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings:tutorial_db", EnvironmentVariableTarget.Process))
+                options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__tutorial_db", EnvironmentVariableTarget.Process))
             );
 
             //services.AddDbContext<TutorialDbContext>(options =>

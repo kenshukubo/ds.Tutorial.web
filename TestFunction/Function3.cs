@@ -25,7 +25,7 @@ namespace TestFunction
 
         [FunctionName("CreateTask")]
         public async Task<IActionResult> CreateTask(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "task")] CreateTaskModel req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "task")] CreateTaskModel req,
             ILogger log)
         {
             log.LogInformation("Creating a new task list item");

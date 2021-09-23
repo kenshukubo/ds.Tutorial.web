@@ -23,7 +23,7 @@ namespace TestFunction
 
         [FunctionName("Function2")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation($".NET Core Version: {Environment.Version}");
