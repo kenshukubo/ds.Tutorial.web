@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Work Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Working Page</h1>
+</div>
+
+<hr>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Work" asp-action="FileUpload">
+    <div class="form-group">
+        <div class="col-md-4">
+            <p>ファイルアップロード</p>
+            <input type="file" name="files" multiple />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
