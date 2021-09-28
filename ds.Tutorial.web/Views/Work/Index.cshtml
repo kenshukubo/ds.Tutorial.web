@@ -1,4 +1,5 @@
-﻿@{
+﻿@using ds.Tutorial.Model
+@{
     ViewData["Title"] = "Work Page";
 }
 
@@ -8,11 +9,12 @@
 
 <hr>
 
-<form method="post" enctype="multipart/form-data" asp-controller="Work" asp-action="FileUpload">
+@model CreatePost
+<form enctype="multipart/form-data" asp-action="FileUpload">
     <div class="form-group">
         <div class="col-md-4">
             <p>ファイルアップロード</p>
-            <input type="file" name="files" multiple />
+            <input type="file" asp-for="MyImage" multiple />
         </div>
         <div class="col-md-2">
             <input type="submit" value="Upload" />

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ds.Tutorial.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace ds.Tutorial.web.Controllers
 {
@@ -12,32 +14,40 @@ namespace ds.Tutorial.web.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            Console.WriteLine("画面表示");
+            return View(new CreatePost());
+        }
+
+        private readonly IHostingEnvironment hostingEnvironment;
+        public WorkController(IHostingEnvironment environment)
+        {
+            hostingEnvironment = environment;
         }
 
         [HttpPost]
-        public async Task<IActionResult> FileUpload(List<IFormFile> files)
+        public IActionResult FileUpload(CreatePost model)
         {
-            // 保存先を取得
-            string filePath = @"C:\work\";
+            Console.WriteLine("あっぷろーど");
 
-            // ファイル保存
-            long size = files.Sum(f => f.Length);
-            foreach (var formFile in files)
+            // do other validations on your model as needed
+            if (model.MyImage != null)
             {
-                if (formFile.Length <= 0) continue;
-                // ローカルに保存
-                using (var stream = new FileStream(filePath + formFile.FileName, FileMode.Create))
-                {
-                    await formFile.CopyToAsync(stream);
-                }
+                var uniqueFileName = GetUniqueFileName(model.MyImage.FileName);
+                var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+                var filePath = Path.Combine(uploads, uniqueFileName);
+                model.MyImage.CopyTo(new FileStream(filePath, FileMode.Create)); 
             }
 
-            // 画面に返す返却値
-            ViewData["uploadResult"] = Ok(new { count = files.Count, size, filePath }).Value.ToString();
+            return RedirectToAction("Index", "Work");
+        }
 
-            // ViewをIndex画面で返却
-            return View("Index");
+        private string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                      + "_"
+                      + Guid.NewGuid().ToString().Substring(0, 4)
+                      + Path.GetExtension(fileName);
         }
     }
 }
